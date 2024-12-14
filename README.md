@@ -1,6 +1,6 @@
 # apache_spark
 
-1.Open the course link provided at: https://courses.bigdatainrealworld.com/courses/enrolled/177985?authuser=0
+1.Open the course link provided at: https://courses.bigdatainrealworld.com/courses/enrolled/177985?authuser=0<br>
 2.Register and go to course: Spark Starter Kit
 3.You'll receive email for "Spark for Windows" installation. Download from link.
 4.Select any dataset from Kaggle. I choose 'Stranger things Episode Ratings'. Link to dataset: https://www.kaggle.com/datasets/thedevastator/stranger-things-episode-ratings?resource=download
