@@ -11,10 +11,9 @@
 - [Running Spark on your computer](#Running_Spark)
 - [Load the Dataset in Spark Shell](#Load_Data)
 - [Exploratory Data Analysis (EDA)](#eda)
-- [License](#license)
-- [Contact](#contact)
+- [Visualization](#visualization)
 
-## A.Running Spark on your computer
+## A. Running Spark on your computer
 1. Open command prompt on your PC and check the java version that got installed.If it displays an output, you have java installed.<br>
  ```bash
    java -version
@@ -35,7 +34,7 @@
 ```
 <img width="960" alt="image" src="https://github.com/user-attachments/assets/a1d4590a-ec73-4842-bbf7-1cfc2da9a8b7" />
 
-## B.Load the Dataset in Spark Shell
+## B. Load the Dataset in Spark Shell
 1.Import necessary libraries <br>
 ```bash
 import org.apache.spark.sql.SparkSession
@@ -64,7 +63,7 @@ ratingsDF.show(10)
 ```
 <img width="649" alt="image" src="https://github.com/user-attachments/assets/86177212-98bf-492d-9ebe-a6c01a8ad5c6" />
 
-## C.Exploratory Data Analysis (EDA)
+## C. Exploratory Data Analysis (EDA)
 1.Check the Schema. <br>
 ```bash
 ratingsDF.printSchema()
@@ -123,3 +122,11 @@ ratingsDF.orderBy(desc("Rating")).show()
 ratingsDF.withColumn("Rating_Adjusted", col("Rating") * 1.1)
          .show()
 ```
+## D. Visualizations
+1. You can save a processed version of the DataFrame to CSV:
+```bash
+ratingsDF.write.option("header", "true").csv("C:/Processed_Stranger_Things.csv")
+```
+<img width="512" alt="image" src="https://github.com/user-attachments/assets/96bf662b-4241-4e66-9497-c863bdc13c44" />
+
+###This is how we can perform EDA using Apache Spark on any dataset. Processed files from this setup have been uploaded to the repository.
