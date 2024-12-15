@@ -14,7 +14,7 @@
 - [License](#license)
 - [Contact](#contact)
 
-## Running Spark on your computer
+## A.Running Spark on your computer
 1. Open command prompt on your PC and check the java version that got installed.If it displays an output, you have java installed.<br>
  ```bash
    java -version
@@ -35,7 +35,7 @@
 ```
 <img width="960" alt="image" src="https://github.com/user-attachments/assets/a1d4590a-ec73-4842-bbf7-1cfc2da9a8b7" />
 
-##Load the Dataset in Spark Shell
+## B.Load the Dataset in Spark Shell
 1.Import necessary libraries <br>
 ```bash
 import org.apache.spark.sql.SparkSession
@@ -64,7 +64,7 @@ ratingsDF.show(10)
 ```
 <img width="649" alt="image" src="https://github.com/user-attachments/assets/86177212-98bf-492d-9ebe-a6c01a8ad5c6" />
 
-## Exploratory Data Analysis (EDA)
+## C.Exploratory Data Analysis (EDA)
 1.Check the Schema. <br>
 ```bash
 ratingsDF.printSchema()
@@ -76,3 +76,50 @@ ratingsDF.printSchema()
 ratingsDF.describe().show()
 ```
 <img width="959" alt="image" src="https://github.com/user-attachments/assets/630f8db6-e1c6-4b71-aba9-087934d6a62e" />
+
+3.Finding null/missing values in each column.
+```bash
+import org.apache.spark.sql.functions._
+ratingsDF.select(ratingsDF.columns.map(c => sum(col(c).isNull.cast("int")).alias(c)): _*).show()
+```
+<img width="517" alt="image" src="https://github.com/user-attachments/assets/a28fb4ab-94de-47d5-bc74-24d1e41b2615" />
+
+4. To check the unique episodes:
+```bash
+ratingsDF.select("Episode").distinct().show()
+ratingsDF.groupBy("Episode").count().show()
+```
+5. Perform grouping and calculate statistics for the "Episode" column: 'Average rating by Episode'
+```bash
+ratingsDF.groupBy("Episode")
+         .agg(avg("Rating").alias("Avg_Rating"))
+         .orderBy("Episode")
+         .show()
+```
+Maximum and Minimum Rating per Episode
+```bash
+ratingsDF.groupBy("Episode")
+         .agg(
+           max("Rating").alias("Max_Rating"),
+           min("Rating").alias("Min_Rating")
+         )
+         .orderBy("Episode")
+         .show()
+```
+6. Check how the ratings are distributed. You can count how often each rating appears:
+```bash
+ratingsDF.groupBy("Rating").count().orderBy("Rating").show()
+```
+7. Filter rows based on certain conditions, e.g., episodes with ratings above a certain threshold:
+```bash
+ratingsDF.filter("Rating > 8.5").show()
+```
+8. Sort the dataset by "Rating" in descending order to see the top-rated episodes:
+```bash
+ratingsDF.orderBy(desc("Rating")).show()
+```
+10. You can create a new column based on existing data. For example:
+```bash
+ratingsDF.withColumn("Rating_Adjusted", col("Rating") * 1.1)
+         .show()
+```
