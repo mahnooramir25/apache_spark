@@ -128,5 +128,5 @@ ratingsDF.withColumn("Rating_Adjusted", col("Rating") * 1.1)
 ratingsDF.write.option("header", "true").csv("C:/Processed_Stranger_Things.csv")
 ```
 <img width="512" alt="image" src="https://github.com/user-attachments/assets/96bf662b-4241-4e66-9497-c863bdc13c44" />
-<br>
+
 ### This is how we can perform EDA using Apache Spark on any dataset. Processed files from this setup have been uploaded to the repository.
