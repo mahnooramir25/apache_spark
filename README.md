@@ -8,13 +8,13 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Running Spark on your computer](#Running_Spark)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
-## Installation
+## Running Spark on your computer
 
 ### Prerequisites
 
